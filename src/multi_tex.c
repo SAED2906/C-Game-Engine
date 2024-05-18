@@ -10,13 +10,18 @@ typedef int bool;
 #define true 1
 #define false 0
 
+struct l_texture {
+    SDL_Texture* texture;
+    int width;
+    int height;
+};
+
 const int SCREEN_HEIGHT = 1080;
 const int SCREEN_WIDTH = 1920;
 
 SDL_Window* window = NULL;
 
 SDL_Surface* screen_surface = NULL;
-SDL_Surface* screen_surface_hello_world = NULL;
 
 bool init();
 bool load_media();
@@ -32,6 +37,10 @@ SDL_Surface* current_surface = NULL;
 SDL_Renderer* renderer = NULL;
 
 SDL_Texture* texture = NULL;
+
+l_texture texture_1;
+l_texture texture_2;
+
 
 int main(int argc, char* args[]) {
 
@@ -219,7 +228,7 @@ bool load_media()
 
 void close_window()
 {
-    // Free loaded image
+    // Free loaded image:
     SDL_DestroyTexture( texture );
     texture = NULL;
 
